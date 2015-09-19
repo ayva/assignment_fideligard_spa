@@ -2,7 +2,7 @@
 <head>
   <title>Fideligard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="css/style.css"/>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
@@ -10,19 +10,34 @@
     <!-- Router -->
     <script src="javascript/services/uiRouter.js"></script>
 </head>
+
   <body ng-app='tradeApp'>
 
     <h1 class='text-center'>Fideligard index</h1>
 
+
     <div class="container">
       <div class="row ">
-        <div class = "col-md-5 col-lg-5" ui-view='stocks'>
+
+        <!-- stocks view-->
+        <div class = "col-sm-7 col-md-7 col-lg-7" ui-view='stocks'>
           stocks not rendered
         </div>
 
-        <div class = "col-md-5 col-lg-5" ui-view='portfolio'>
-          portfolio not rendered
+
+        <div class = "offset-col-xs-3 col-xs-5 offset-col-sm-3 col-sm-5 offset-col-md-2 col-md-5 col-lg-5">
+          <div ui-view='portfolio'>
+            data picker in portfolio not rendered
+          </div>
+
+          <!-- report state-->
+          <div ui-view>
+            report not rendered
+          </div>
         </div>
+
+        
+
       </div>
     </div>
 
@@ -32,13 +47,16 @@
   <!-- directives -->
   <script src="javascript/directives/stockInfo.js"></script>
   <script src="javascript/directives/datePicker.js"></script>
+  <script src="javascript/directives/transactionInfo.js"></script>
 
   <!-- services -->
   <script src="javascript/services/tradeYahoo.js"></script>
-
+  <script src="javascript/services/tradePortfolio.js"></script>
   <!-- controllers -->
   <script src="javascript/controllers/tradeCtrl.js"></script>
+  <script src="javascript/controllers/tradeFormCtrl.js"></script>
   <script src="javascript/controllers/portfolioCtrl.js"></script>
+  <script src="javascript/controllers/transactionCtrl.js"></script>
 
   </body>
 </html>

@@ -1,0 +1,23 @@
+
+<h3>Transactions</h3>
+
+<input ng-model="symbolFilter" placeholder="Filter symbol">
+<table class = 'col-sm-5 col-md-5 col-lg-5 table table-striped'>
+
+  <thead>
+    <tr>
+      <th ng-click="orderOption = '-date'">Date</th>
+      <th ng-click="orderOption = 'name'">Symbol</th>
+      <th ng-click="orderOption = 'type'">Type</th>
+      <th ng-click="orderOption = '-quantity'">Quantity</th>
+      <th ng-click="orderOption = '-price'">Price</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr transaction-info ng-repeat="transaction in transactions | filter: {name: symbolFilter} | orderBy : orderOption">
+    </tr>
+  </tbody>
+
+</table>

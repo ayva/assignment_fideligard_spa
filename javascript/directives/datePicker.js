@@ -3,5 +3,8 @@ tradeApp.directive("datesPicker", function(){
     restrict: "E",
     templateUrl: "javascript/directives/datePicker.html",
     scope: true
+
+    // {datePicker: '=',
+    //         showPicker: '&'}
   };
 });

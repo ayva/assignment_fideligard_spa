@@ -1,20 +1,21 @@
 <h2>Stocks</h2>
 
-<table class='table table-striped'>
+ <input ng-model="symbolFilter" placeholder="Filter symbol">
+<table class = 'col-sm-5 col-md-5 col-lg-5 table table-striped'>
 
   <thead>
     <tr>
-      <th>Symbol</th>
-      <th>Price</th>
-      <th>1d</th>
-      <th>7d</th>
-      <th>30d</th>
-      <th>Trade?</th>
+      <th ng-click="orderOption = 'name'">Symbol</th>
+      <th ng-click="orderOption = 'price'">Price</th>
+      <th ng-click="orderOption = '-oneday'">1d</th>
+      <th ng-click="orderOption = '-sevenday'">7d</th>
+      <th ng-click="orderOption = '-month'">30d</th>
+      <th >Trade?</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr stock-info ng-repeat="stock in stocks">
+    <tr stock-info ng-repeat="stock in stocks.data | filter: {name: symbolFilter} | orderBy : orderOption">
     </tr>
   </tbody>
 

@@ -1,6 +1,6 @@
-<td>{{stock["name"]}}</td>
+<td>{{stock.name}}</td>
 <td>{{stock.price | currency}}</td>
 <td>{{stock.oneday | currency}}</td>
 <td>{{stock.sevenday | currency}}</td>
 <td>{{stock.month | currency}}</td>
-<td><a ng-click="tradeSymbol(symbol.name)">trade</a></td>
+<td><a ui-sref="report.trade" ng-click="tradeSymbol(stock.name, stock.price)" >trade</a></td>

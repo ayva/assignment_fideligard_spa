@@ -1,2 +1,5 @@
-1/1/2014
-<input type="range" min="0" max="365" ng-model="datePicker"> 12/31/2014
+<p>From: {{yearago | date}}</p>
+<input type="range" min="0" max="365" ng-model="datePicker" ng-change="showPicker(datePicker)"> 
+<p>To: {{today | date}}</p>
+
+<p>Picked date: {{showPickedData(datePicker) | date}} </p>

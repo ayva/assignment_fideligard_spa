@@ -1,0 +1,79 @@
+<h3>Trade</h3>
+
+
+<div class='row'>
+  <div class='col-sm-6'>
+    <form name="tradingFormFill" novalidate>
+      <label>Symbol
+        {{tradeForm.name}}
+      </label>
+      <br>
+      <label>Buy/Sell
+        <select type='text' ng-model='action' required>
+          <option>Buy</option>
+          <option>Sell</option>
+        </select>
+      </label>
+
+      <label>Quantity
+        <input type='text' ng-model='quantity'  ng-pattern = "/^\d*$/" required>
+      </label>
+      validation: {{valid}}
+      <br>
+      <label>Date
+        {{tradeForm.date | date}}
+      </label>
+
+      <label>Price
+        <span>{{tradeForm.price | currency}}</span>
+        
+      </label>
+      <br>
+
+      <label>Cost
+
+        {{ (tradeForm.price|number) * (tradingFormFill.quantity|number) | currency}}
+      </label>
+
+
+<!--      
+     VAlid?
+     {{ ((tradeForm.price|number) * (tradingFormFill.quantity|number) | currency) < availableCash}}  -->
+<!--       <p ng-if="validForm()">You don't have enough cash to buy as much.</p> -->
+
+      <button class="btn btn-lg btn-primary" ui-sref="report.transactions"
+        ng-click='updatePortfolio(tradeForm.date, tradeForm.name, action, quantity, tradeForm.price)'>
+          Place Order!
+      </button>
+
+    </form>
+  </div>
+
+  <div class='col-sm-6'>
+    <div class='row'>
+      <h6>Cash Available<h6>
+      {{availableCash | currency}}
+      <!-- From User Service -->
+    </div>
+
+    <div class='row'>
+      <h6>Order Status</h6>
+       <p style="color:green">VALID</p> 
+  <!-- From Processing model -->
+    </div>
+  </div>
+</div>
+
+<table  class = "table-striped">
+  <h3>Here's Your Information</h3>
+  <thead>
+  </thead>
+  <tbody>
+    <tr ng-repeat="(key, value) in tradingFormFill">
+      <td>{{key }} :</td>
+      <td>{{value}}</td>
+    </tr>
+  </tbody>
+
+
+</table>

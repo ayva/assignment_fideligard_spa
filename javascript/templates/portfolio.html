@@ -1,66 +1,13 @@
+
+<a ui-sref="report.trade">Trade</a>
+<a ui-sref="report.transactions">Transactions</a>
 <h2>Portfolio</h2>
-
+ 
 <!-- View for date picker -->
-<dates-picker>Date picker</dates-picker>
+<dates-picker data-picker="dataPicker" show-picker="showPicker()" show-data="showPickedData()">Date picker</dates-picker>
 
-<select>
-  <option ui-sref='portfolio.trade'>Trade</option>
-  <option ui-sref='portfolio.transactions'>Transactions</option>
-</select>
 
-<h3>Trade</h3>
-<div class='row'>
-  <div class='col-sm-6'>
-    <form >
-      <label>Symbol
-        <input type='text' ng-model='symbol'>
-      </label>
 
-      <label>Buy/Sell
-        <select type='text' ng-model='action'>
-          <option>Buy</option>
-          <option>Sell</option>
-        </select>
-      </label>
-
-      <label>Quantity
-        <input type='text' ng-model='quantity'>
-      </label>
-
-      <label>Date
-        <input type='text' ng-model='quantity'>
-      </label>
-
-      <label>Price
-        {{stock.price}}
-      </label>
-
-      <label>Cost
-        {{stock.price}}
-      </label>
-
-      <button class="btn btn-lg btn-primary"
-        ng-click='updatePortfolio(stock, quantity, buy/sell)'>
-          Place Order!
-      </button>
-
-    </form>
-  </div>
-
-  <div class='col-sm-6'>
-    <div class='row'>
-      <h4>Cash Available<h4>
-      {{User.cash_available}}
-      <!-- From User Service -->
-    </div>
-
-    <div class='row'>
-      <h4>Order Status</h4>
-        VALID
-  <!-- From Processing model -->
-    </div>
-  </div>
-</div>
 
 
 

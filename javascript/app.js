@@ -7,33 +7,55 @@ tradeApp.config(function(
 
   $urlRouterProvider.otherwise("/");
 
-  $stateProvider.state('report',{
+  $stateProvider
+  .state('index',{
     url: '/',
-
-    resolve: {
-      stockData : ['tradeYahooService',
-      function(tradeYahooService){ tradeYahooService.getStock();}]
-    },
-
+    
     views:{
-
         'stocks': {
         templateUrl: 'javascript/templates/stocks.html',
-        controller: 'tradeCtrl'
-        },
-
-       'portfolio': {
-        templateUrl: 'javascript/templates/portfolio.html',
-        controller: 'portfolioCtrl'
+        controller: 'tradeCtrl',
         }
       }
-
-  });
-
-  $stateProvider.state('portfolio.trade',{
+  })
+  .state('report',{
+    //controller: 'portfolioCtrl',
+    url: '/report',
+    resolve: {
+      stockData : ['tradeYahooService',
+      function(tradeYahooService){
+        tradeYahooService.getStock(365);}]
+    },
+    views: {
+      '': {
+          templateUrl: 'javascript/templates/report.html'
+        },
+      'stocks': {
+        templateUrl: 'javascript/templates/stocks.html',
+        controller: 'tradeCtrl',
+        },
+      'portfolio': {
+        controller: 'portfolioCtrl',
+        templateUrl: 'javascript/templates/portfolio.html'
+      }
+    }
+  })
+  .state('report.transactions',{
+    controller: 'transactionCtrl',
+    url: '/transactions',
+    templateUrl: 'javascript/templates/portfolio-transaction.html'
+    
+  })
+  .state('report.trade',{
+    controller: 'tradeFormCtrl',
     url: '/trade',
-    templateUrl: 'javascript/templates/trade.html'
+    templateUrl: 'javascript/templates/portfolio-trade.html'
+
+    
   });
 
 });
 
+tradeApp.run(function($rootScope){
+  $rootScope.$on("$stateChangeError", console.log.bind(console));
+});

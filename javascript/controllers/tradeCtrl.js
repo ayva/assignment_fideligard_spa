@@ -1,15 +1,18 @@
 tradeApp.controller('tradeCtrl',  [ '$scope',
                                     'tradeYahooService',
-                                    'stockData',
-                                  function( $scope,
-                                            tradeYahooService, stockData){
+                                     'tradePortfolioService', function( $scope,
+                                            tradeYahooService,
+                                            tradePortfolioService){
 
 
-//$scope.stockData = stockData;
-// $scope.tradeSymbol = tradeYahooService.tradeSymbol;
-
-// $scope.stocks = tradeYahooService.showStock();
-// $scope.stocks = stockData;
+$scope.tradeForm = tradePortfolioService.tradeForm;
 $scope.stocks = tradeYahooService.getStockData();
-// console.log("in tradeCtrl", $scope.stocks);
+$scope.tradeSymbol = function(name, price){
+  //send info about paper to service
+
+  tradePortfolioService.tradeAction(name, price);
+  
+};
+
+console.log("trade controller run");
 }]);
